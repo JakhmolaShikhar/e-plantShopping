@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
@@ -268,7 +269,22 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
-
+            {plantsArray.map((category, index) => (
+                <div key={index}>
+                    <h1>{category.category}</h1>
+                    <div className='product-list'>
+                        {category.plants.map((plant, plantIndex) => (
+                            <div className='product-card' key={plantIndex}>
+                                <h4 className='product-title'>{plant.name}</h4>
+                                <img src={plant.image} className='product-image' alt={plant.name}></img>
+                                <p>{plant.description}</p>
+                                <p>{plant.cost}</p>
+                                <button className='product-button'>Add to Cart</button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
 
         </div>
  ) :  (
